@@ -34,6 +34,10 @@ init() {
   [[ -f "$hoarder_data_dir/hoarder_urls.txt" ]] || mexit "$hoarder_data_dir/hoarder_urls.txt does not exist. Please create it and populate it with the URLs you wish to hoard from."
   [[ -f "$hoarder_data_dir/hoarder_archive.txt" ]] || echo "NOTICE: $hoarder_data_dir/hoarder_archive.txt does not exist, a new one will be created."
 
+  if [[ -z "$hoarder_mode" ]]; then
+    [[ "$2" == "loop" ]] && hoarder_mode = loop || hoarder_mode = runonce
+  fi
+
   if [[ "$hoarder_mode" == "loop" ]]; then
     if [[ -z "$hoarder_wait" ]]; then
       [[ -z "$2" ]] && hoarder_wait=43200 && echo "hoarder_wait was not set, defaulting to $hoarder_wait." || hoarder_wait="$2"
