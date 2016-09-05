@@ -35,7 +35,7 @@ init() {
   [[ -f "$hoarder_data_dir/hoarder_archive.txt" ]] || echo "NOTICE: $hoarder_data_dir/hoarder_archive.txt does not exist, a new one will be created."
 
   if [[ -z "$hoarder_mode" ]]; then
-    [[ "$2" == "loop" ]] && hoarder_mode = loop || hoarder_mode = runonce
+    [[ "$2" == "loop" ]] && hoarder_mode=loop || hoarder_mode=runonce
   fi
 
   if [[ "$hoarder_mode" == "loop" ]]; then
